@@ -1,3 +1,4 @@
+import 'package:fitelo_assignment/constants/app_constants.dart';
 import 'package:fitelo_assignment/features/weight_picker/widgets/circular_scale_picker/circular_scale_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class WeightPickerScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Center(
             child: Text(
-              'Weight Picker',
+              weightPickerAppBarrTitle,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
