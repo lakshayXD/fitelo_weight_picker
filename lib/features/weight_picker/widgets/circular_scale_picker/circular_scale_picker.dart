@@ -147,7 +147,7 @@ class _CircularScalePickerState extends State<CircularScalePicker> {
           NotificationListener<ScrollNotification>(
             onNotification: (notification) {
               if (notification is ScrollEndNotification) {
-                _snapToNearest();
+                //_snapToNearest();
               }
               return false;
             },
