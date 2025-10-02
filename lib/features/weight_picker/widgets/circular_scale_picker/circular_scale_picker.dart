@@ -74,26 +74,6 @@ class _CircularScalePickerState extends State<CircularScalePicker> {
     return double.parse((widget.min + idx).toStringAsFixed(2));
   }
 
-  void _snapToNearest() {
-    if (!_controller.hasClients) return;
-    final double rawIndex = _controller.offset / widget.itemExtent;
-    final int targetIndex = rawIndex.round().clamp(0, 1 << 31);
-    final double targetOffset = targetIndex * widget.itemExtent;
-
-    _snapping = true;
-    _controller
-        .animateTo(
-      targetOffset,
-      duration: const Duration(milliseconds: 160),
-      curve: Curves.easeOut,
-    )
-        .whenComplete(() {
-      _snapping = false;
-      setState(() {});
-      widget.onChanged?.call(widget.min + targetIndex);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final double diameter = widget.radius * 2;
@@ -146,9 +126,6 @@ class _CircularScalePickerState extends State<CircularScalePicker> {
           ),
           NotificationListener<ScrollNotification>(
             onNotification: (notification) {
-              if (notification is ScrollEndNotification) {
-                //_snapToNearest();
-              }
               return false;
             },
             child: SizedBox(
